@@ -53,14 +53,14 @@ function BookForm({ book, validate }) {
       if (!newBook.error) {
         validate(true);
       } else {
-        alert(newBook.message);
+        alert('Erreur lors de la création du livre. Vérifier le format des données');
       }
     } else {
       const updatedBook = await updateBook(data, data.id);
       if (!updatedBook.error) {
         navigate('/');
       } else {
-        alert(updatedBook.message);
+        alert('Erreur lors de la mise à jour du livre. Vérifier le format des données');
       }
     }
   };
