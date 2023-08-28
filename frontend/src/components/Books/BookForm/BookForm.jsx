@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';

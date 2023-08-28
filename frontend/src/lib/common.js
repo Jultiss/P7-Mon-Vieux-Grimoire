@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import { API_ROUTES } from '../utils/constants';
 
@@ -36,19 +37,11 @@ export async function getAuthenticatedUser() {
 
 export async function getBooks() {
   try {
-    const token = getFromLocalStorage('token');
-    const userId = getFromLocalStorage('userId');
-    console.log('Token for getBooks:', token);
-    console.log('UserId for getBooks:', userId);
-
     const response = await axios({
       method: 'GET',
       url: `${API_ROUTES.BOOKS}`,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
     });
-
+    // eslint-disable-next-line array-callback-return
     const books = formatBooks(response.data);
     return books;
   } catch (err) {
