@@ -6,7 +6,6 @@ const upload = require('../middleware/multer-config');
 
 const bookCtrl = require('../controllers/book');
 
-
 router.get('/',  bookCtrl.getBooks);
 router.get('/bestrating', bookCtrl.getBestRatedBooks);
 router.get('/:id', bookCtrl.getOneBook);
