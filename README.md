@@ -5,6 +5,7 @@ https://openclassrooms.com/fr/paths/717/projects/1335/assignment
 
 Pour initialiser le backend : 
 cd backend
+npm install
 nodemon server
 
 Pour initialiser le Frontend
