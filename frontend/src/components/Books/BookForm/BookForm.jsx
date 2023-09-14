@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -54,14 +53,14 @@ function BookForm({ book, validate }) {
       if (!newBook.error) {
         validate(true);
       } else {
-        alert('Erreur lors de la création du livre. Vérifier le format des données');
+        alert(newBook.message);
       }
     } else {
       const updatedBook = await updateBook(data, data.id);
       if (!updatedBook.error) {
         navigate('/');
       } else {
-        alert('Erreur lors de la mise à jour du livre. Vérifier le format des données');
+        alert(updatedBook.message);
       }
     }
   };
@@ -138,4 +137,5 @@ BookForm.defaultProps = {
   book: null,
   validate: null,
 };
+
 export default BookForm;

@@ -10,7 +10,10 @@ const validateEmail = (email) => {
 exports.signup = (req, res, next) => {
     const email = req.body.email;
     if (!validateEmail(email)) {
-        return res.status(400).json({ message: 'Format d\'email invalide !' });
+        return res.status(400).json({ error: 'Format d\'email invalide !' });
+    }
+    if (req.body.password?.length < 12) {
+        return res.status(400).json({ error: 'Le mot de passe doit faire au moins 12 caractères !' });
     }
 
     bcrypt.hash(req.body.password, 10)
@@ -20,7 +23,7 @@ exports.signup = (req, res, next) => {
           password: hash
         });
         user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+          .then(() => res.status(201).json({ error: 'Utilisateur créé !' }))
           .catch(error => res.status(400).json({ error }));
       })
       .catch(error => res.status(500).json({ error }));
