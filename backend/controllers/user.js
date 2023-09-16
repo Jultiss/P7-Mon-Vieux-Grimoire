@@ -24,9 +24,9 @@ exports.signup = (req, res, next) => {
         });
         user.save()
           .then(() => res.status(201).json({ error: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
+          .catch(error => res.status(400).json({ error: 'Cet email est déjà utilisé !' }));
       })
-      .catch(error => res.status(500).json({ error }));
+      .catch(error => res.status(500).json({ error: 'Erreur lors de la création de l\'utilisateur !' }));
 };
 
 exports.login = (req, res, next) => {
@@ -49,7 +49,7 @@ exports.login = (req, res, next) => {
                     )
                 });
             })
-            .catch(error => res.status(500).json({ error }));
+            .catch(error => res.status(500).json({ error: 'Erreur lors de la comparaison des mots de passe' }));
         })
-        .catch(error => res.status(500).json({ error }));
+        .catch(error => res.status(500).json({ error: 'Erreur lors de la recherche de l\'utilisateur' }));
 };
